@@ -1,0 +1,62 @@
+<div class="products_page">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <div class="filters">
+
+          <div class="dropdown">
+            <select id="sort-by" (change)="quarypram($event)">
+              <option value="" selected disabled hidden>Sort By</option>
+              <!-- <option value="Name">Name</option> -->
+              <option value="Low" >Show Low to High Price</option>
+              <option value="High">Show High to Low Price</option>
+          </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-9">
+        <div class="products">
+          <div class="row">
+            <div class="col-4 each_product"*ngFor="let product of products">
+              <div [id]="product.ProductURL" class="carousel slide" data-ride="carousel">
+
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                  <div class="carousel-item" *ngFor="let image of product.Images.split('|') let first = first" [ngClass]={active:first}>
+                    <img src="{{product.ListImagePath}}{{image}}" alt="{{image}}" width="100%" height="100%">
+                  </div>
+                </div>
+
+
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#{{product.ProductURL}}" data-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#{{product.ProductURL}}" data-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </a>
+
+              </div>
+
+              <div  class="row">
+                <div class="col-3" *ngFor="let image of product.Images.split('|')" >
+                  <img src="{{product.SmallImagePath}}{{image}}" alt="{{image}}" width="100%" height="100%">
+                </div>
+              </div>
+              Collection:-
+              Price:- {{product.Price}}<br>
+              Product Title:- {{product.ProductTitle}}<br>
+              StyleName:- {{product.StyleName}}<br>
+              Style Number:- {{product.StyleNumber}}<br>
+              Net Quantity:- {{product.NetQuantity}}<br>
+              Product Code:- {{product.ProductCode}}<br>
+              Available Sizes:-{{product.AvailableSizes}}
+
+<!--              <img src={{add}} width="100%" height="100%">-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

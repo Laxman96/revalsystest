@@ -1,0 +1,24 @@
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark">   <!-- *ngIf="currentUser" --> 
+  <div class="navbar-nav">
+      <a class="nav-item nav-link" [routerLink]="['list']" [queryParams]="{sort:'LowTohigh'}" >Home</a>
+      <!-- [routerLink]="['product-list']" [queryParams]="{ page: 99 }" -->
+      <a class="nav-item nav-link"  routerLink="/feedback">Feedback</a>
+      <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      <a class="nav-item nav-link">Hi {{currentUser.firstName}}!</a>
+      
+  </div>
+</nav>
+
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="">
+              <alert></alert>
+              <router-outlet></router-outlet>
+          </div>
+      </div>
+  </div>
+</div>
+
